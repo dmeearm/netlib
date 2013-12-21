@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <errno.h>
 
-
 #define MAX_EVENTS 128
 #define BUFSIZE    10 
 
@@ -185,7 +184,6 @@ int main()
 
                 ev.events = EPOLLIN;
                 ev.data.ptr = &private_data;
-               // ev.data.fd = conn_sock;
 
                 epoll_ctl(epfd, EPOLL_CTL_ADD, conn_sock, &ev);
                 continue;
