@@ -191,7 +191,8 @@ int main()
                 continue;
             }
             
-            if ((events[i].events & (EPOLLERR | EPOLLHUP)) && (events[i].events & (EPOLLIN | EPOLLOUT)) == 0) {
+            if ((events[i].events & (EPOLLERR | EPOLLHUP)) 
+                && (events[i].events & (EPOLLIN | EPOLLOUT)) == 0) {
                 events[i].events |= EPOLLIN | EPOLLOUT;
             }
 
