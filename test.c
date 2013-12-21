@@ -38,8 +38,8 @@ int listenfd_init()
         return -1;
     }
     
-    ret = setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (const void *)&reuseaddr, 
-        sizeof(int));
+    ret = setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, 
+        (const void *)&reuseaddr,  sizeof(int));
     if (ret < 0) {
         perror("setsockopt");
         return -1;
