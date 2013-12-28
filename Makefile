@@ -15,9 +15,10 @@ $(TARGET):$(OBJS)
 %.o:%.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
+.PHONY:clean
+
 clean:
 	rm -f $(TARGET) $(OBJS)
 
-.PHONY:clean
 
 
