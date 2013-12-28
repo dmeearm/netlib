@@ -39,8 +39,6 @@
 #define MAX_EVENTS 128
 #define BUFSIZE    10 
 
-int  epfd;
-int  listenfd;
 char buffer[BUFSIZE];
 
 struct event {
@@ -78,13 +76,15 @@ int listenfd_init()
 
 int epoll_init()
 {
-   epfd = epoll_create(1);
-   if (epfd < 0) {
-       perror("epoll_create");
-       return -1;
-   }
+    int epfd;
 
-   return 0;
+    epfd = epoll_create(1);
+    if (epfd < 0) {
+        perror("epoll_create");
+        return -1;
+    }
+
+    return epfd;
 }
 
 int handle_read(int fd, int *length)
@@ -157,12 +157,14 @@ int main()
     int i;
     int nfds;
     int conn_sock;
+    int epfd;
+    int listenfd;
     struct sockaddr_in sockaddr;
     struct epoll_event ev;
     struct event private_data;
 
-    ret = epoll_init();
-    if (ret < 0) {
+    epfd = epoll_init();
+    if (epfd < 0) {
         return -1;
     }
     
