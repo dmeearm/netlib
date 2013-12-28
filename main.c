@@ -12,8 +12,8 @@
 #define MAX_EVENTS 128
 #define BUFSIZE    10 
 
-int epfd;
-int listenfd;
+int  epfd;
+int  listenfd;
 char buffer[BUFSIZE];
 
 struct event {
