@@ -3,14 +3,14 @@ CFLAGS = -g -Wall -Wpointer-arith -Wno-unused-parameter \
 
 CC = gcc
 
-OBJS = main.o
+OBJS = main.o net.o 
 
 TARGET = main
 
 all:$(TARGET)
 
 $(TARGET):$(OBJS)
-	$(CC) $< -o $@
+	$(CC) $^ -o $@
 
 %.o:%.c
 	$(CC) -c $(CFLAGS) $< -o $@
